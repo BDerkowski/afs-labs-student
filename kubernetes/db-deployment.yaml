@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: bderkowski
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/bderkowski-harbor-project/app:971c881-b72a4a1
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/bderkowski-harbor-project/db@sha256:ce07be7d0c3f23b7b6310bfc5afcda131588d5c86990bd8c3d087ea8b05be2fe
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
