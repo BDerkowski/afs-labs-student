@@ -1,4 +1,5 @@
 -- Lab 6 Comment
+-- Lab 7 Comment change to see scan output of db pipeline
 -- PostgreSQL database dump
 --
 
